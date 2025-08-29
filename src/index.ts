@@ -42,32 +42,45 @@ import { CarMovable } from "./lab01/bai29/Car";
 import { Movable } from "./lab01/bai29/Movable";
 import { Robot } from "./lab01/bai29/Robot";
 import { School } from "./lab01/bai30/School";
+import { helloPromise } from "./lab02/bai01";
+import { getNumber } from "./lab02/bai02";
+import { throwError } from "./lab02/bai03";
+import { getRandomNumber } from "./lab02/bai04";
+import { simulateTask } from "./lab02/bai05";
+import { promiseAll } from "./lab02/bai06";
+import { promiseRace } from "./lab02/bai07";
+import { promiseChain } from "./lab02/bai08";
+import { filterEvenNumbers } from "./lab02/bai09";
+import { promiseFinally } from "./lab02/bai10";
 
-function bai01(): Person {
+// Lab01
+console.log("=====================================================LAB 01=====================================================\n")
+
+function bai01_01(): Person {
     var person = new Person("Nguyễn Thắng Minh Đạt", 21)
 
     return person;
 }
 
-function bai02(name: string, age: number, grade: number): string {
+function bai02_01(name: string, age: number, grade: number): string {
     var student = new Student(name, age, grade)
 
     return student.displayAllInfo()
 }
 
-function bai03(brand: string, model: string, year: number): string {
+function bai03_01(brand: string, model: string, year: number): string {
     var car = new Car(brand, model, year)
 
     return car.showCarInfo()
 }
 
-function bai04(width: number, height: number): Rectangle {
+function bai04_01(width: number, height: number): Rectangle {
     var rectangle = new Rectangle(width, height)
 
     return rectangle
 }
 
-function bai05(): void {
+function bai05_01(): void {
     var account = new BankAccount(100000)
     account.deposit(100000)
     account.withdraw(200000)
@@ -76,20 +89,20 @@ function bai05(): void {
     console.log(account.view(), "\n")
 }
 
-function bai06(): Book {
+function bai06_01(): Book {
     var book = new Book("ABCDEFGH", "Nguyễn Thắng Minh Đạt", 2025)
 
     return book;
 }
 
-function bai07(): void {
+function bai07_01(): void {
     var user = new User("Minh Đạt")
     console.log(`Before: ${user.getter()}`)
     user.setter("Nguyễn Thắng Minh Đạt")
     console.log(`After: ${user.getter()}`, "\n")
 }
 
-function bai08(): void {
+function bai08_01(): void {
     const products: Product[] = [
         new Product('Car', 100),
         new Product('Plane', 200),
@@ -101,7 +114,7 @@ function bai08(): void {
     console.log(productG100, "\n")
 }
 
-function bai09(): void {
+function bai09_01(): void {
     const dog: Animal = {
         name: 'Dog',
         sound: ()=> 'Gau Gau'
@@ -110,13 +123,13 @@ function bai09(): void {
     console.log(`Animal: ${dog.name} with sound ${dog.sound()}`, "\n")
 }
 
-function bai10(): void {
+function bai10_01(): void {
     const account = new Account("MinhDat", "12345678", 1)
     console.log(account.username)
     console.log(account.accountId, "\n")
 }
 
-function bai11(): void {
+function bai11_01(): void {
     const dog =  new Dog("AAA")
     const cat = new Cat("BBB")
 
@@ -124,7 +137,7 @@ function bai11(): void {
     cat.meow()
 }
 
-function bai12(): void {
+function bai12_01(): void {
     const sparrow = new Bird("Sparrow");
     sparrow.fly()
 
@@ -132,7 +145,7 @@ function bai12(): void {
     salmon.swim();
 }
 
-function bai13(): void {
+function bai13_01(): void {
     const square = new Square(5);
     console.log("Square area:", square.area());
 
@@ -140,7 +153,7 @@ function bai13(): void {
     console.log("Circle area:", circle.area(), "\n");
 }
 
-function bai14(): void {
+function bai14_01(): void {
     const manager = new Manager("Alice", 80000, 10);
     manager.getDetails();
     manager.conductMeeting();
@@ -150,7 +163,7 @@ function bai14(): void {
     developer.writeCode();
 }
 
-function bai15(): void {
+function bai15_01(): void {
     const library = new Library();
 
     const book1 = new BookLib("The Great Gatsby", "F. Scott Fitzgerald", "123456");
@@ -165,7 +178,7 @@ function bai15(): void {
     library.listBooks();
 }
 
-function bai16(): void {
+function bai16_01(): void {
     const numberBox = new Box<number>(123);
     console.log("In box:", numberBox);
 
@@ -173,7 +186,7 @@ function bai16(): void {
     console.log("In box:", bookBox, "\n")
 }
 
-function bai17(): void {
+function bai17_01(): void {
     const logger1 = Logger.getInstance()
     const logger2 = Logger.getInstance();
 
@@ -181,14 +194,14 @@ function bai17(): void {
     logger2.error("Something went wrong!");
 }
 
-function bai18(): void {
+function bai18_01(): void {
     console.log("Add:", MathUtil.add(10, 5));
     console.log("Subtract:", MathUtil.subtract(10, 5));
     console.log("Multiply:", MathUtil.multiply(10, 5));
     console.log("Divide:", MathUtil.divide(10, 5), "\n");
 }
 
-function bai19(): void {
+function bai19_01(): void {
     const animals: AnimalMore[] = [
         new DogMore("Buddy"),
         new AnimalMore("GenericAnimal")
@@ -199,7 +212,7 @@ function bai19(): void {
     }
 }
 
-function bai20(): void {
+function bai20_01(): void {
     const car = new CarMore("Toyota", 120);
     car.drive();
     car.stop();
@@ -209,14 +222,14 @@ function bai20(): void {
     bike.stop();
 }
 
-function bai21(): void {
+function bai21_01(): void {
     const bookRepo = new Repository<Book>();
     bookRepo.add(new Book("ABCDEFGH", "Nguyễn Thắng Minh Đạt", 2025));
     bookRepo.add(new Book("456-XYZ", "QWERTYUIOP", 1984));
     console.log("Books:", bookRepo.getAll(), "\n");
 }
 
-function bai22(): void {
+function bai22_01(): void {
     const numberStack = new Stack<number>();
 
     numberStack.push(10);
@@ -229,7 +242,7 @@ function bai22(): void {
     console.log("Is empty?", numberStack.isEmpty(), "\n");
 }
 
-function bai23(): void {
+function bai23_01(): void {
     const cash: Payment = new CashPayment();
     cash.pay(100);
 
@@ -237,7 +250,7 @@ function bai23(): void {
     card.pay(250);
 }
 
-function bai24(): void {
+function bai24_01(): void {
     const fan = new Fan("Panasonic");
     fan.turnOn();
 
@@ -245,11 +258,11 @@ function bai24(): void {
     ac.turnOn();
 }
 
-function bai25(): void {
+function bai25_01(): void {
     Shape.describe()
 }
 
-function bai26(): void {
+function bai26_01(): void {
     const order = new Order();
     order.addProduct(new Product("Laptop", 1200));
     order.addProduct(new Product("Mouse", 25));
@@ -258,12 +271,12 @@ function bai26(): void {
     console.log("Total Price: $" + order.calculateTotal(), "\n");
 }
 
-function bai27(): void {
+function bai27_01(): void {
     const teacher = new Teacher("Alice", 35, "Mathematics");
     teacher.introduce();
 }
 
-function bai28(): void {
+function bai28_01(): void {
     const dog = new DogProtected("Buddy");
     dog.speak();
 
@@ -271,7 +284,7 @@ function bai28(): void {
     cat.speak();
 }
 
-function bai29(): void {
+function bai29_01(): void {
     const car: Movable = new CarMovable("Tesla", 120);
     const robot: Movable = new Robot("RX-78");
 
@@ -279,7 +292,7 @@ function bai29(): void {
     robot.move();
 }
 
-function bai30(): void {
+function bai30_01(): void {
     const school = new School();
 
     school.addTeacher(new Teacher("Alice", 35, "Mathematics"));
@@ -292,95 +305,176 @@ function bai30(): void {
 }
 
 console.log("===Bài 01===")
-console.log(bai01(), "\n")
+console.log(bai01_01(), "\n")
 
 console.log("===Bài 02===")
-console.log(bai02("Nguyễn Thắng Minh Đạt", 21, 10), "\n")
+console.log(bai02_01("Nguyễn Thắng Minh Đạt", 21, 10), "\n")
 
 console.log("===Bài 03===")
-console.log(bai03("Ferrari", "Italy", 2000), "\n")
+console.log(bai03_01("Ferrari", "Italy", 2000), "\n")
 
 console.log("===Bài 04===")
-console.log(`Area: ${bai04(10, 5).area()}, Perimeter: ${bai04(10, 5).perimeter()}`, "\n")
+console.log(`Area: ${bai04_01(10, 5).area()}, Perimeter: ${bai04_01(10, 5).perimeter()}`, "\n")
 
 console.log("===Bài 05===")
-bai05()
+bai05_01()
 
 console.log("===Bài 06===")
-console.log(bai06(), "\n")
+console.log(bai06_01(), "\n")
 
 console.log("===Bài 07===")
-bai07()
+bai07_01()
 
 console.log("===Bài 08===")
-bai08()
+bai08_01()
 
 console.log("===Bài 09===")
-bai09()
+bai09_01()
 
 console.log("===Bài 10===")
-bai10()
+bai10_01()
 
 console.log("===Bài 11===")
-bai11()
+bai11_01()
 console.log("\n")
 
 console.log("===Bài 12===")
-bai12()
+bai12_01()
 console.log("\n")
 
 console.log("===Bài 13===")
-bai13()
+bai13_01()
 
 console.log("===Bài 14===")
-bai14()
+bai14_01()
 console.log("\n")
 
 console.log("===Bài 15===")
-bai15()
+bai15_01()
 console.log("\n")
 
 console.log("===Bài 16===")
-bai16()
+bai16_01()
 
 console.log("===Bài 17===")
-bai17()
+bai17_01()
 
 console.log("\n===Bài 18===")
-bai18()
+bai18_01()
 
 console.log("===Bài 19===")
-bai19()
+bai19_01()
 
 console.log("\n===Bài 20===")
-bai20()
+bai20_01()
 
 console.log("===Bài 21===")
-bai21()
+bai21_01()
 
 console.log("===Bài 22===")
-bai22()
+bai22_01()
 
 console.log("===Bài 23===")
-bai23()
+bai23_01()
 
 console.log("\n===Bài 24===")
-bai24()
+bai24_01()
 
 console.log("\n===Bài 25===")
-bai25()
+bai25_01()
 
 console.log("\n===Bài 26===")
-bai26()
+bai26_01()
 
 console.log("===Bài 27===")
-bai27()
+bai27_01()
 
 console.log("\n===Bài 28===")
-bai28()
+bai28_01()
 
 console.log("\n===Bài 29===")
-bai29()
+bai29_01()
 
 console.log("\n===Bài 30===")
-bai30()
+bai30_01()
+
+// Lab02
+console.log("\n=====================================================LAB 02=====================================================\n")
+
+function bai01_02(): void {
+    helloPromise.then(message => console.log(message))
+}
+
+function bai02_02(): void {
+    getNumber().then(message => console.log(message, "\n"))
+}
+
+function bai03_02(): void {
+    throwError()
+        .then(message=>console.log(message))
+        .catch(error =>{
+            console.error(error.message)
+        })
+}
+
+function bai04_02(): void {
+    getRandomNumber()
+        .then((result) => {
+            console.log("Random number:", result, "\n");
+        })
+        .catch((error) => {
+            console.error("Error:", error.message);
+        });
+}
+
+function bai05_02(): void {
+    simulateTask(2000).then((message) => {
+        console.log(message, "\n");
+    });
+}
+
+function bai06_02(): void {
+    promiseAll().then(message => console.log(message))
+}
+
+function bai07_02(): void {
+    promiseRace().then(message => console.log(message))
+}
+
+function bai08_02(): void {
+    promiseChain
+}
+
+function bai09_02(): void {
+    filterEvenNumbers([1, 2, 3, 4, 5, 6])
+        .then((result) => {
+            console.log("Even numbers:", result, "\n");
+        })
+        .catch((err) => {
+            console.error("Error:", err);
+        });
+}
+
+function bai10_02(): void {
+    promiseFinally(true)
+        .then((result) => {
+            console.log("Result:", result);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        })
+        .finally(() => {
+            console.log("Done", "\n");
+        });
+}
+
+bai01_02()
+bai02_02()
+bai03_02()
+bai04_02()
+bai05_02()
+bai06_02()
+bai07_02()
+bai08_02()
+bai09_02()
+bai10_02()
