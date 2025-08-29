@@ -52,6 +52,22 @@ import { promiseRace } from "./lab02/bai07";
 import { promiseChain } from "./lab02/bai08";
 import { filterEvenNumbers } from "./lab02/bai09";
 import { promiseFinally } from "./lab02/bai10";
+import { helloAsync } from "./lab02/bai11";
+import { simulateTask13 } from "./lab02/bai13";
+import { tripleNumber } from "./lab02/bai14";
+import { fetchUser } from "./lab02/bai18";
+import { fetchUsers } from "./lab02/bai19";
+import { fetchUserTimeout } from "./lab02/bai20";
+import { fetchData } from "./lab02/bai21";
+import { fetchDataUsers } from "./lab02/bai22";
+import { fetchTodosNotCompleted } from "./lab02/bai23";
+import { postData } from "./lab02/bai24";
+import { downloadFile } from "./lab02/bai25";
+import { simulateWait } from "./lab02/bai26";
+import { fetchWithRetry } from "./lab02/bai27";
+import { batchProcess } from "./lab02/bai28";
+import { queueProcess } from "./lab02/bai29";
+import { fetchMultipleUsers } from "./lab02/bai30";
 
 // Lab01
 console.log("=====================================================LAB 01=====================================================\n")
@@ -468,6 +484,158 @@ function bai10_02(): void {
         });
 }
 
+async function bai11_02(): Promise<void> {
+    const message = await helloAsync();
+    console.log(message);
+}
+
+async function bai12_02(): Promise<void> {
+    const result = await simulateTask(2000)
+    console.log("===Bài 12===\n", result, "\n");
+}
+
+async function bai13_02(): Promise<void> {
+    try {
+        const result = await simulateTask13(2000, true);
+        console.log(result);
+    } catch (error) {
+        console.error("Error occurred:", error);
+    } finally {
+        console.log("Task complete (success or fail)\n");
+    }
+}
+
+async function bai14_02(): Promise<void> {
+    const result = await tripleNumber(5);
+    console.log("===Bài 14===")
+    console.log(result, "\n");
+}
+
+async function bai15_02(): Promise<void> {
+    const first = await tripleNumber(5);
+    console.log("===Bài 15===")
+    console.log(first);
+
+    const second = await tripleNumber(6);
+    console.log("===Bài 15===")
+    console.log(second);
+
+    const third = await tripleNumber(7);
+    console.log("===Bài 15===")
+    console.log(third, "\n");
+}
+
+async function bai16_02(): Promise<void> {
+    const results = await Promise.all([
+        tripleNumber(2),
+        tripleNumber(4),
+        tripleNumber(6),
+    ]);
+    console.log("===Bài 16===")
+    console.log(results, "\n");
+}
+
+async function bai17_02(): Promise<void> {
+    const results = await Promise.all([
+        tripleNumber(2),
+        tripleNumber(4),
+        tripleNumber(6),
+    ]);
+
+    for await (const result of results) {
+        console.log("===Bài 17===\n", result, "\n");
+    }
+}
+
+async function bai18_02(): Promise<void> {
+    const result = await fetchUser(5);
+    console.log("===Bài 18===")
+    console.log(result, "\n");
+}
+
+async function bai19_02(): Promise<void> {
+    const results = await fetchUsers([1, 2, 3, 4])
+    console.log("===Bài 19===")
+    console.log(results, "\n");
+}
+
+async function bai20_02(): Promise<void> {
+    try {
+        const user = await fetchUserTimeout(1);
+        console.log("===Bài 20===\n", user, "\n");
+    } catch (error) {
+        console.error("===Bài 20===\n", error, "\n");
+    }
+}
+
+async function bai21_02(): Promise<void> {
+    try {
+        const user = await fetchData(1);
+        console.log("===Bài 21===")
+        console.log("User:", user, "\n");
+    } catch (error) {
+        console.log("===Bài 21===")
+        console.error("Error fetching user:", error, "\n");
+    }
+}
+
+async function bai22_02(): Promise<void> {
+    const results = await fetchDataUsers([1, 2, 3, 4])
+    console.log("===Bài 22===")
+    console.log(results, "\n");
+}
+
+async function bai23_02(): Promise<void> {
+    try {
+        const todos = await fetchTodosNotCompleted();
+        console.log("===Bài 23===")
+        console.log("Todos:", todos, "\n");
+    } catch (error) {
+        console.log("===Bài 23===")
+        console.error("Error fetching user:", error, "\n");
+    }
+}
+
+async function bai24_02(): Promise<void> {
+    try {
+        const post = await postData();
+        console.log("===Bài 24===")
+        console.log("Data:", post, "\n");
+    } catch (error) {
+        console.log("===Bài 24===")
+        console.error("Error fetching user:", error, "\n");
+    }
+}
+
+async function bai25_02(): Promise<void> {
+    await downloadFile("bai25_02.zip");
+}
+
+async function bai26_02(): Promise<void> {
+    await simulateWait();
+}
+
+async function bai27_02(): Promise<void> {
+    try {
+        const data = await fetchWithRetry("https://jsonplaceholder.typicode.com/todos/1", 3);
+        console.log("===Bài 27===\n", "Fetched data:", data, "\n");
+    } catch (error) {
+        console.error("===Bài 27===\n", "Final error:", error, "\n");
+    }
+}
+
+async function bai28_02(): Promise<void> {
+    await batchProcess()
+}
+
+async function bai29_02(): Promise<void> {
+    await queueProcess()
+}
+
+async function bai30_02(): Promise<void> {
+    await fetchMultipleUsers()
+}
+
 bai01_02()
 bai02_02()
 bai03_02()
@@ -478,3 +646,23 @@ bai07_02()
 bai08_02()
 bai09_02()
 bai10_02()
+bai11_02()
+bai12_02()
+bai13_02()
+bai14_02()
+bai15_02()
+bai16_02()
+bai17_02()
+bai18_02()
+bai19_02()
+bai20_02()
+bai21_02()
+bai22_02()
+bai23_02()
+bai24_02()
+bai25_02()
+bai26_02()
+bai27_02()
+bai28_02()
+bai29_02()
+bai30_02()
